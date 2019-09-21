@@ -1,5 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">  <PropertyGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>8.0</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="**\*.xaml.cs">

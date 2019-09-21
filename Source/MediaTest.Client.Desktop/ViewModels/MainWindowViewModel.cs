@@ -1,7 +1,5 @@
 ﻿using Avalonia.Media.Imaging;
 using SkiaSharp;
-using System;
-using System.IO;
 
 namespace MediaTest.Client.Desktop.ViewModels
 {
@@ -24,11 +22,10 @@ namespace MediaTest.Client.Desktop.ViewModels
         {
             get
             {
-                using (var image = this.GenerateSnapshotImage())
-                using (var data = image.Encode())
-                {
-                    return new Bitmap(data.AsStream());
-                }
+                using var image = this.GenerateSnapshotImage();
+                using var data = image.Encode();
+
+                return new Bitmap(data.AsStream());
             }
         }
     }
