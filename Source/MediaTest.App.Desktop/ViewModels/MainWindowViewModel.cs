@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MediaTest.App.Desktop.Windows.ViewModels
+﻿namespace MediaTest.App.Desktop.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {

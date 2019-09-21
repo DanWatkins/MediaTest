@@ -2,7 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace MediaTest.App.Desktop.Windows.Views
+namespace MediaTest.App.Desktop.Views
 {
     public class MainWindow : Window
     {

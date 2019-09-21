@@ -1,9 +1,9 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using MediaTest.App.Desktop.Windows.ViewModels;
+using MediaTest.App.Desktop.ViewModels;
 
-namespace MediaTest.App.Desktop.Windows
+namespace MediaTest.App.Desktop
 {
     public class ViewLocator : IDataTemplate
     {

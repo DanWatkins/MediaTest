@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Logging.Serilog;
-using MediaTest.App.Desktop.Windows.ViewModels;
-using MediaTest.App.Desktop.Windows.Views;
+using MediaTest.App.Desktop.ViewModels;
+using MediaTest.App.Desktop.Views;
 
 namespace MediaTest.App.Desktop.Windows
 {
@@ -15,7 +15,8 @@ namespace MediaTest.App.Desktop.Windows
         // Avalonia configuration, don't remove; also used by visual designer.
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
-                .UsePlatformDetect()
+                .UseWin32()
+                .UseSkia()
                 .LogToDebug()
                 .UseReactiveUI();
 

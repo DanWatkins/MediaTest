@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ReactiveUI;
+﻿using ReactiveUI;
 
-namespace MediaTest.App.Desktop.Windows.ViewModels
+namespace MediaTest.App.Desktop.ViewModels
 {
     public class ViewModelBase : ReactiveObject
     {
