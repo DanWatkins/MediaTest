@@ -9,36 +9,22 @@ namespace MediaTest.Client.Desktop.ViewModels
     {
         public string Greeting => "Welcome to Avalonia!";
 
-        private SKBitmap _Bitmap;
-        public SKBitmap Bitmap
+        private SKImage GenerateSnapshotImage()
         {
-            get
-            {
-                if (_Bitmap == null)
-                {
-                    this._Bitmap = SKBitmap.Decode(@"C:\Users\dwatk\Desktop\test.bmp");
+            var info = new SKImageInfo(512, 512);
+            var surface = SKSurface.Create(info);
+            var canvas = surface.Canvas;
+            canvas.Clear(SKColors.Green);
+            canvas.Flush();
 
-                    using (var resized = new SKBitmap(128, 128))
-                    {
-                        _Bitmap.ScalePixels(resized, SKFilterQuality.High);
-                        using (var image = SKImage.FromBitmap(resized))
-                        using (var data = image.Encode(SKEncodedImageFormat.Jpeg, 80))
-                        using (var stream = File.OpenWrite($@"C:\Users\dwatk\Desktop\resized-{DateTime.UtcNow.Ticks}.jpg"))
-                        {
-                            data.SaveTo(stream);
-                        }
-                    }
-                }
-
-                return this._Bitmap;
-            }
+            return surface.Snapshot();
         }
 
         public Bitmap PreviewImage
         {
             get
             {
-                using (var image = SKImage.FromBitmap(this.Bitmap))
+                using (var image = this.GenerateSnapshotImage())
                 using (var data = image.Encode())
                 {
                     return new Bitmap(data.AsStream());
