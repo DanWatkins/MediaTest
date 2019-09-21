@@ -8,10 +8,10 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="MediaTest.Client.Desktop.Windows">
 
-    <Design.DataContext>
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
+  <Design.DataContext>
+    <vm:MainWindowViewModel/>
+  </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+  <Image Source="{Binding PreviewImage}"/>
 </Window>
