@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 16.0.29306.81
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediaTest.App.Desktop", "Source\MediaTest.App.Desktop\MediaTest.App.Desktop.csproj", "{451ED7B1-79A5-4208-B5F9-B5ED56F72AA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediaTest.Client.Desktop", "Source\MediaTest.Client.Desktop\MediaTest.Client.Desktop.csproj", "{451ED7B1-79A5-4208-B5F9-B5ED56F72AA1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediaTest.App.Desktop.Windows", "Source\MediaTest.App.Desktop.Windows\MediaTest.App.Desktop.Windows.csproj", "{DD0C8538-0D74-4DC5-B23C-49C0BE5AFA4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediaTest.Client.Desktop.Windows", "Source\MediaTest.Client.Desktop.Windows\MediaTest.Client.Desktop.Windows.csproj", "{DD0C8538-0D74-4DC5-B23C-49C0BE5AFA4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

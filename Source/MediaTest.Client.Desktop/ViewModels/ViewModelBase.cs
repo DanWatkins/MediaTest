@@ -1,6 +1,6 @@
 ﻿using ReactiveUI;
 
-namespace MediaTest.App.Desktop.ViewModels
+namespace MediaTest.Client.Desktop.ViewModels
 {
     public class ViewModelBase : ReactiveObject
     {

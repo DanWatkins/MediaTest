@@ -1,9 +1,9 @@
 ﻿using Avalonia;
 using Avalonia.Logging.Serilog;
-using MediaTest.App.Desktop.ViewModels;
-using MediaTest.App.Desktop.Views;
+using MediaTest.Client.Desktop.ViewModels;
+using MediaTest.Client.Desktop.Views;
 
-namespace MediaTest.App.Desktop.Windows
+namespace MediaTest.Client.Desktop.Windows
 {
     class Program
     {

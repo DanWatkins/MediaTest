@@ -1,12 +1,12 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="clr-namespace:MediaTest.App.Desktop.ViewModels;assembly=MediaTest.App.Desktop"
+        xmlns:vm="clr-namespace:MediaTest.Client.Desktop.ViewModels;assembly=MediaTest.Client.Desktop"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="MediaTest.App.Desktop.Views.MainWindow"
+        x:Class="MediaTest.Client.Desktop.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="MediaTest.App.Desktop.Windows">
+        Title="MediaTest.Client.Desktop.Windows">
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>

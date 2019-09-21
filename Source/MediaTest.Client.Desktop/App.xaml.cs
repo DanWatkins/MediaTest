@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Markup.Xaml;
 
-namespace MediaTest.App.Desktop
+namespace MediaTest.Client.Desktop
 {
     public class App : Application
     {

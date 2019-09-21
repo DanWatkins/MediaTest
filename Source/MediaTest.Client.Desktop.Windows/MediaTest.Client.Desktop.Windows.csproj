@@ -7,6 +7,6 @@
     <PackageReference Include="Avalonia" Version="0.8.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MediaTest.App.Desktop\MediaTest.App.Desktop.csproj" />
+    <ProjectReference Include="..\MediaTest.Client.Desktop\MediaTest.Client.Desktop.csproj" />
   </ItemGroup>
 </Project>
