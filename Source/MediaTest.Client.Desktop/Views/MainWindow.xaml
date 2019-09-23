@@ -12,5 +12,12 @@
     <vm:MainWindowViewModel/>
   </Design.DataContext>
 
-  <Image Source="{Binding PreviewImage}"/>
+  <DockPanel>
+    <Menu DockPanel.Dock="Top">
+      <MenuItem Header="File">
+        <MenuItem Header="Open" Command="{Binding LoadImageFromFileCommand}" HotKey="CTRL+O"/>
+      </MenuItem>
+    </Menu>
+    <Image Source="{Binding PreviewImage}" Margin="5" Stretch="None"/>
+  </DockPanel>
 </Window>
