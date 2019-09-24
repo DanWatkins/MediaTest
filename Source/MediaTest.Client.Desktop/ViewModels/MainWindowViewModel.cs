@@ -87,8 +87,13 @@ namespace MediaTest.Client.Desktop.ViewModels
                 {
                     new FileDialogFilter
                     {
+                        Extensions = new List<string> { "jpg" },
+                        Name = "JPEG"
+                    },
+                    new FileDialogFilter
+                    {
                         Extensions = new List<string> { "png" },
-                        Name = "Portable Network Graphics"
+                        Name = "PNG"
                     }
                 }
             };
@@ -97,9 +102,18 @@ namespace MediaTest.Client.Desktop.ViewModels
 
             if (result?.Length > 0)
             {
-                var encodedStream = this.previewImage.Encode().AsStream();
+                var encodedData = null as SKData;
+                string extension = new FileInfo(result).Extension.ToLower();
+
+                if (extension == ".jpg")
+                    encodedData = this.previewImage.Encode(SKEncodedImageFormat.Jpeg, 90);
+                else if (extension == ".png")
+                    encodedData = this.previewImage.Encode(SKEncodedImageFormat.Png, 100);
+                else
+                    throw new Exception($"Unsupported file type \"{extension}\"");
+
                 using var filestream = File.OpenWrite(result);
-                await encodedStream.CopyToAsync(filestream);
+                await encodedData.AsStream().CopyToAsync(filestream);
             }
         }
 
