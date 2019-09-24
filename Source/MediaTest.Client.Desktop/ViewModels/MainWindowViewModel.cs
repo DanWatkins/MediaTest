@@ -4,6 +4,7 @@ using ReactiveUI;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reactive;
 using System.Threading.Tasks;
 
@@ -12,16 +13,15 @@ namespace MediaTest.Client.Desktop.ViewModels
     public class MainWindowViewModel : ViewModelBase
     {
         // TODO: Find a way to remove this default constructor
-        public MainWindowViewModel()
+        public MainWindowViewModel() : this(new Window())
         {
-            this.window = new Window();
-            this.LoadImageFromFileCommand = ReactiveCommand.CreateFromTask(LoadImageFromFileCommandExecuteAsync);
         }
 
         public MainWindowViewModel(Window window)
         {
             this.window = window;
             this.LoadImageFromFileCommand = ReactiveCommand.CreateFromTask(LoadImageFromFileCommandExecuteAsync);
+            this.SaveImageToFileCopyCommand = ReactiveCommand.CreateFromTask(SaveImageToFileCopyCommandExecuteAsync, SaveImageToFileCopyCommandCanExecute);
         }
 
         public string Greeting => "Welcome to Avalonia!";
@@ -46,6 +46,8 @@ namespace MediaTest.Client.Desktop.ViewModels
 
         public ReactiveCommand<Unit, Unit> LoadImageFromFileCommand { get; }
 
+        public ReactiveCommand<Unit, Unit> SaveImageToFileCopyCommand { get; }
+
         private async Task LoadImageFromFileCommandExecuteAsync()
         {
             var dialog = new OpenFileDialog
@@ -69,14 +71,44 @@ namespace MediaTest.Client.Desktop.ViewModels
 
             if (result.Length > 0)
             {
-                this.LoadImageFromFile(result[0]);
+                this.previewImage = SKImage.FromBitmap(SKBitmap.Decode(result[0]));
+                this.RaisePropertyChanged(nameof(this.PreviewImage));
             }
         }
 
-        private void LoadImageFromFile(string filepath)
+        private async Task SaveImageToFileCopyCommandExecuteAsync()
         {
-            this.previewImage = SKImage.FromBitmap(SKBitmap.Decode(filepath));
-            this.RaisePropertyChanged(nameof(this.PreviewImage));
+            if (this.previewImage == null)
+                throw new ArgumentNullException(nameof(this.previewImage));
+
+            var dialog = new SaveFileDialog
+            {
+                Filters = new List<FileDialogFilter>
+                {
+                    new FileDialogFilter
+                    {
+                        Extensions = new List<string> { "png" },
+                        Name = "Portable Network Graphics"
+                    }
+                }
+            };
+
+            var result = await dialog.ShowAsync(this.window);
+
+            if (result?.Length > 0)
+            {
+                var encodedStream = this.previewImage.Encode().AsStream();
+                using var filestream = File.OpenWrite(result);
+                await encodedStream.CopyToAsync(filestream);
+            }
+        }
+
+        private IObservable<bool> SaveImageToFileCopyCommandCanExecute
+        {
+            get
+            {
+                return this.WhenAnyValue(x => x.PreviewImage, (Bitmap? pi) => pi != null);
+            }
         }
     }
 }
