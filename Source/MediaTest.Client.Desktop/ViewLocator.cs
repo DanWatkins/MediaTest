@@ -11,12 +11,21 @@ namespace MediaTest.Client.Desktop
 
         public IControl Build(object data)
         {
-            var name = data.GetType().FullName.Replace("ViewModel", "View");
+            var name = data.GetType().FullName?.Replace("ViewModel", "View");
+
+            if (name == null)
+                throw new ArgumentException("Data does not have a type name.", nameof(data));
+
             var type = Type.GetType(name);
 
             if (type != null)
             {
-                return (Control)Activator.CreateInstance(type);
+                var control = Activator.CreateInstance(type);
+
+                if (control == null)
+                    throw new ArgumentException("Could not create a Control for the supplied data.", nameof(data));
+
+                return (IControl)control;
             }
             else
             {
